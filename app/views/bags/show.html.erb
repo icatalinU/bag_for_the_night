@@ -1,10 +1,9 @@
 
   <h2>Bag Details</h2>
 
-
   <div class="bag-details">
-    <% @bag.picture_url.each do |url| %>
-      <%= image_tag url, alt: @bag.name, class: "bag-img" %>
+    <% @bag.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, alt: @bag.name, class: "bag-img" %>
       <% end %>
       <h2><%= @bag.name %></h2>
       <p><%= @bag.brand %></p>
