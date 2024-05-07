@@ -7,3 +7,54 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+# db/seeds.rb
+require 'faker'
+
+User.destroy_all
+
+ #=> { username: 'catalin', email: 'catalin@gmail.com', password: 'password123' }
+  User.create(
+
+     email:"catalin@gmail.com",
+    password: "password123"
+  )
+
+# Delete existing bags
+Bag.destroy_all
+
+# Create 20 bags with regular brands
+20.times do
+  new_bag = Bag.new(
+    name: Faker::Commerce.product_name,
+    brand: Faker::Company.name,
+    price: Faker::Commerce.price(range: 50..500.0, as_string: true),
+    description: Faker::Lorem.paragraph(sentence_count: 2),
+    condition: Faker::Hipster.word,
+    location: Faker::Address.city
+  )
+  new_bag.user = User.first
+ new_bag.save
+end
+
+
+# Custom picture URLs for designer bags
+#designer_picture_urls = [
+ # "https://example.com/designer_bag_1.jpg",
+ # "https://example.com/designer_bag_2.jpg",
+  # Add more custom picture URLs as needed
+#]
+
+# Create 20 bags with designer brands and custom picture URLs
+#20.times do |i|
+ # Bag.create!(
+ #   name: Faker::Commerce.product_name,
+  #  brand: Faker::Company.name,
+  #  price: Faker::Commerce.price(range: 500..5000.0, as_string: true),
+  #  description: Faker::Lorem.paragraph(sentence_count: 2),
+  #  picture_url: designer_picture_urls[i % designer_picture_urls.length], # Cycle through custom picture URLs
+   # condition: Faker::Hipster.word,
+   # location: Faker::Address.city
+ # )
+#end
+
+puts "Seeding completed!"
