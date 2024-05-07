@@ -13,8 +13,12 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @bag = Bag.find(params[:bag_id])
     @booking.bag = @bag
-    @booking.save
-    redirect_to bag_path(@bag)
+    @booking.user = current_user
+    if @booking.save
+    redirect_to profile_path(current_user), notice: "Your request has been sent!  Awaiting confirmation."
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def destroy
@@ -23,6 +27,6 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:bag).permit(:booking_start, :booking_end)
+    params.require(:booking).permit(:booking_start, :booking_end, :comment)
   end
 end
