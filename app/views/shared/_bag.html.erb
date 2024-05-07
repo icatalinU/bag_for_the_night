@@ -1,5 +1,15 @@
+
 <div class= "container">
  <%= @bag.name %>
+  <div class="card-body">
+      <h5 class="card-title"><%= @bag.name %></h5>
+      <p class="card-text">Brand: <%= @bag.brand %></p>
+      <p class="card-text">Price: £<%= @bag.price %></p>
+      <%= image_tag @bag.picture_url, alt: @bag.name, class: "bag-img" %>
+      <p><%= link_to "Bag details", bag_path(@bag) %></p>
+  </div>
+</div>
+<!--<%= @bag.name %>
    <p>
     <strong><%= @bag.brand %></strong>
   </p>
@@ -9,5 +19,4 @@
     <p>
     <%= @bag.description %>
   </p>
-
 </div>

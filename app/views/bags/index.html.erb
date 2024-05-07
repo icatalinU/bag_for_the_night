@@ -1,17 +1,12 @@
-<h1>Bags#index</h1>
-<p>Find me in app/views/bags/index.html.erb</p>
-
 <div class="container">
   <div class="bags">
     <% @bags.each do |bag| %>
     <% @bag = bag %>
       <%= render "shared/bag" %>
-
       <p>
        <%= link_to "visit this bag", bag_path(bag) %>
       </p>
     <% end %>
   </div>
-
   <%= link_to "Add a bag", new_bag_path %>
 </div>
