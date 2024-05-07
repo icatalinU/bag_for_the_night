@@ -1,31 +1,12 @@
-<h1> Welcome to Bag For The Night! </h1>
-<p> Here are some of our bags: </p>
-
-
-<div class="card-container">
-  <% @bags.sample(10).each do |bag| %>
-    <div class="card">
-      <%# <%= render bag %>
-      <%= image_tag bag.picture_url, alt: bag.name, class: "bag-img" %>
-      <div class="card-body">
-      <h5 class="card-title"><%= bag.name %></h5>
-      <p class="card-text">Brand: <%= bag.brand %></p>
-      <p class="card-text">Price: $<%= bag.price %></p>
-      <%# <p><%= link_to "Bag details", bag%>
-      </div>
-    </div>
-  <% end %>
-
-
-<!-- <div class="container">
+<div class="container">
   <div class="bags">
     <% @bags.each do |bag| %>
-     <%= render bag %>
+    <% @bag = bag %>
+      <%= render "shared/bag" %>
       <p>
-        <%= link_to "View bag", bag_path(@bag) %>
+       <%= link_to "visit this bag", bag_path(bag) %>
       </p>
     <% end %>
   </div>
-
-  <%= link_to "Add a bag", new_bag_path%>
-</div> -->
+  <%= link_to "Add a bag", new_bag_path %>
+</div>

@@ -5,10 +5,11 @@
         <h3>List your bag</h3>
         <%= simple_form_for @bag do |f| %>
           <%= f.input :name, placeholder: 'Name your bag' %>
-          <%# <%= f.input :photo, as: :file %>
+          <%= f.input :photo, as: :file %>
           <%= f.input :brand, placeholder: 'Brand' %>
           <%= f.input :price, placeholder: 'Price' %>
           <%= f.input :description, placeholder: 'Description' %>
+          <%= f.input :location, placeholder: "Location" %>
           <%= f.submit class: 'btn btn-flat' %>
         <% end %>
       </div>
