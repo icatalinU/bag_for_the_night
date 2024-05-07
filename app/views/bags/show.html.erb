@@ -1,4 +1,5 @@
 
+
   <h2>Bag Details</h2>
 
   <div class="bag-details">
@@ -11,4 +12,6 @@
       <p><%= @bag.description %></p>
       <p><%= @bag.condition %></p>
       <p><%= @bag.location %></p>
+    <%= link_to "booking this bag", new_bag_booking_path(@bag) %>
 </div>
+

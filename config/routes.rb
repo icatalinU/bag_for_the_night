@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  get '/profile/:users_id', to: 'pages#profile', as: 'profile'
   resources :bags, except: [:index, :edit, :update] do
     resources :bookings, only: [:index, :new, :create]
   end
