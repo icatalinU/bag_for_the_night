@@ -4,12 +4,14 @@
 <div class="container">
   <div class="bags">
     <% @bags.each do |bag| %>
-      <%= render bag %>
+    <% @bag = bag %>
+      <%= render "shared/bag" %>
+
       <p>
-        <%= link_to "View bag", bag_path(@bag) %>
+       <%= link_to "visit this bag", bag_path(bag) %>
       </p>
     <% end %>
   </div>
 
-  <%= link_to "Add a bag", new_bag_path%>
+  <%= link_to "Add a bag", new_bag_path %>
 </div>

@@ -1,2 +1,9 @@
-<h1>Bookings#new</h1>
-<p>Find me in app/views/bookings/new.html.erb</p>
+<div class='container'>
+  <h1>Request to book this bag</h1>
+    <%= simple_form_for([@bag, @booking]) do |f| %>
+      <%= f.input :booking_start %>
+      <%= f.input :booking_end %>
+      <%= f.input :comment, placeholder: 'message to owner' %>
+      <%= f.submit %>
+    <% end %>
+</div>

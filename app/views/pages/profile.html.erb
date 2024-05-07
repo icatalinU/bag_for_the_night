@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="d-flex col-6">
+    <h1><%= current_user.email %> Profile Page </h1>
+    <%  @bags.each do |my_bag| %>
+      <%= my_bag.name %>
+      <%= my_bag.bookings %>
+    <% end %>
+
+
+  </div>
+</div>
