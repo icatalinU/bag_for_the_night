@@ -16,7 +16,7 @@ gem "puma", ">= 5.0"
 
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem "importmap-rails"
-
+gem "dotenv-rails"
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
 gem "devise"
@@ -52,7 +52,7 @@ gem "sassc-rails"
 gem "cloudinary"
 
 group :development, :test do
-  gem "dotenv-rails"
+  
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mswin mswin64 mingw x64_mingw ]
 
