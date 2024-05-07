@@ -1,0 +1,14 @@
+
+  <h2>Bag Details</h2>
+
+
+  <div class="bag-details">
+    <% bag.picture_url.each do |image| %>
+      <%# <%= image_tag image.url, alt: bag.name, class: "bag-img" %>
+    <% end %>
+      <h2><%= @bag.name %></h2>
+      <p><%= @bag.brand %></p>
+      <p><%= @bag.price %></p>
+      <p><%= @bag.description %></p>
+      <p><%= @bag.condition %></p>
+      <p><%= @bag.location %></p>
