@@ -1,0 +1,13 @@
+<h1>Bags#new</h1>
+<p>Find me in app/views/bags/new.html.erb</p>
+
+<%= simple_form_for(@bag) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :brand %>
+  <%= f.input :price %>
+  <%= f.input :description %>
+  <%= f.input :condition %>
+  <%= f.input :location %>
+  <%= f.input :photo, as: :file %>
+  <%= f.submit %>
+<% end %>
