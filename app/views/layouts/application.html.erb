@@ -6,16 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-KZCb1WLRqPn7aQO+0Fdb/iq2SrKqLeTtbjqw7i7BY5XHdN6GZbFmNLOnXG3v4MLtzdndKAbPLX5LOXj2/7BhZg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-
   <body>
     <%= render "shared/navbar" %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
+    <%= render"shared/footer" %>
   </body>
+  <div class="container-fluid" style="height: 150px" >
+    </div>
 </html>
-
