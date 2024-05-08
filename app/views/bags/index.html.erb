@@ -1,13 +1,15 @@
-
 <h1>Bags#index</h1>
 <p>Find me in app/views/bags/index.html.erb</p>
 <div class="container mt-5">
   <h1 class="text-center mb-4">Bag Rental</h1>
-  <div class="bags row" >
+  <div class="bags row">
     <% @bags.each do |bag| %>
       <div class="bag col-md-4 mb-4">
         <div class="card h-100">
           <!-- Add an image for each bag if available -->
+          
+          <%= image_tag(url_for(bag.photos.first), class: "card-img-top") if bag.photos.attached? %>
+
 
           <div class="card-body">
             <h2 class="card-title text-center"><%= bag.name %></h2>
