@@ -10,17 +10,22 @@
 # db/seeds.rb
 require "open-uri"
 require 'faker'
-# User.destroy_all
+
+=======
+User.destroy_all
  #=> { username: 'catalin', email: 'catalin@gmail.com', password: 'password123' }
-  # User.create(
-  #    email:"catalin@gmail.com",
-  #   password: "password123"
-  # )
+  User.create(
+     email:"catalin@gmail.com",
+    password: "password123"
+  )
+
    bag_links =["https://images-na.ssl-images-amazon.com/images/I/813ptKmjJVL.jpg","https://m.media-amazon.com/images/I/71MQz9WZAxL._AC_SY695_.jpg","https://m.media-amazon.com/images/I/61mcR7xSM0L._AC_SX535_.jpg"]
 # Delete existing bags
 Bag.destroy_all
 # Create 20 bags with regular brands
-10.times do |i|
+
+20.times do |i|
+
   new_bag = Bag.new(
     name: Faker::Commerce.product_name,
     brand: Faker::Company.name,
@@ -34,3 +39,6 @@ Bag.destroy_all
   new_bag.user = User.first
  new_bag.save
 end
+
+puts "Seeding completed!"
+
