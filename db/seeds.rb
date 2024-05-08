@@ -12,27 +12,27 @@ require "open-uri"
 require 'faker'
 require 'open-uri'
 
-User.destroy_all
+# User.destroy_all
 
  #=> { username: 'catalin', email: 'catalin@gmail.com', password: 'password123' }
-  User.create(
-
-     email:"catalin@gmail.com",
-    password: "password123"
-  )
+#  User.create(
+#
+#     email:"catalin@gmail.com",
+#    password: "password123"
+#  )
 
    bag_links =["https://images-na.ssl-images-amazon.com/images/I/813ptKmjJVL.jpg","https://m.media-amazon.com/images/I/71MQz9WZAxL._AC_SY695_.jpg","https://m.media-amazon.com/images/I/61mcR7xSM0L._AC_SX535_.jpg"]
 # Delete existing bags
-Bag.destroy_all
+# Bag.destroy_all
 
 # Create 20 bags with regular brands
-20.times do |i|
+#5.times do |i|
 
 # Delete existing bags
-Bag.destroy_all
+# Bag.destroy_all
 
 bag_file = URI.open("https://collection.cloudinary.com/dwsotsv3c/cc34acfedc88f725cbdba817ac196e16")
-20.times do
+5.times do
 
   new_bag = Bag.new(
     name: Faker::Commerce.product_name,
@@ -44,13 +44,8 @@ bag_file = URI.open("https://collection.cloudinary.com/dwsotsv3c/cc34acfedc88f72
 
  )
  file = URI.open(bag_links[i])
-
  new_bag.photos.attach(io: file, filename: "Katabag.png", content_type: "image/png")
-
-  )
-
   new_bag.photos.attach(io: bag_file, filename: "bag.png", content_type: "image/png")
-
   new_bag.user = User.first
  new_bag.save
 end

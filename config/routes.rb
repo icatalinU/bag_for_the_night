@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   get '/profile/:users_id', to: 'pages#profile', as: 'profile'
-  resources :bags, except: [:index, :edit, :update] do
+  resources :bags, except: [:index] do
     resources :bookings, only: [:index, :new, :create]
   end
 end

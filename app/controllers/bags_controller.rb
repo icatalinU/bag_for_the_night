@@ -16,8 +16,21 @@ class BagsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+
+    def edit
+      @bag = Bag.find(params[:id])
+    end
+
+    def update
+      @bag = Bag.find(params[:id])
+      @bag.update(bag_params)
+      redirect_to bag_path(@bag)
+    end
   end
   def destroy
+    @bag = Bag.find(params[:id])
+    @bag.destroy
+    redirect_to profile_path(current_path), status: :see_other
   end
   private
   def bag_params
