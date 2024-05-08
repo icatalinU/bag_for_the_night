@@ -1,11 +1,31 @@
 <div class="container">
-  <div class="d-flex col-6">
+  <div class="d-flex justify-content-center">
     <h1><%= current_user.email %> Profile Page </h1>
+  </div>
+  <div class="row col-6">
+    <div class="card-container">
+    <div class="card">
     <%  @bags.each do |my_bag| %>
+    <div class="bag-img"></div>
+    <% my_bag.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, alt: my_bag.name, class: "bag-img" %>
+      <% end %>
       <%= my_bag.name %>
-      <%= my_bag.bookings %>
     <% end %>
-
-
+    </div>
+    </div>
+    <div class="card">
+    <ul>
+      <%  @bookings.each do |booking| %>
+      <div>
+        <li>booking.bag.user_id-person who owns the bag- <%= booking.bag.user_id %></li>
+        <li>booking.user_id-person who made the booking- <%= booking.user_id %></li>
+        <li>From - <%= booking.booking_start %></li>
+        <li>Till - <%= booking.booking_end %></li>
+      <% end %>
+      </div>
+    </ul>
+    </div>
+  </div>
   </div>
 </div>

@@ -10,6 +10,7 @@
           
           <%= image_tag(url_for(bag.photos.first), class: "card-img-top") if bag.photos.attached? %>
 
+
           <div class="card-body">
             <h2 class="card-title text-center"><%= bag.name %></h2>
             <p><strong>Brand:</strong> <%= bag.brand %></p>
