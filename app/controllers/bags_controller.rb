@@ -19,6 +19,8 @@ class BagsController < ApplicationController
 
     def edit
       @bag = Bag.find(params[:id])
+      @bag.user = current_user
+      raise
     end
 
     def update
@@ -30,7 +32,7 @@ class BagsController < ApplicationController
   def destroy
     @bag = Bag.find(params[:id])
     @bag.destroy
-    redirect_to profile_path(current_path), status: :see_other
+    redirect_to profile_path(current_user), status: :see_other
   end
   private
   def bag_params

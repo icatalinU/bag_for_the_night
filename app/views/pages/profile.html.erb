@@ -24,10 +24,11 @@
           </div>
           <div class="card-footer">
             <%= link_to "View Details", bag_path(bag), class: "btn btn-primary" %>
-            <%= link_to "Delete this bag", profile_path(current_user), class:"btn btn-primary",
+            <%= link_to "Delete this bag", DESTROY_path(bag), class:"btn btn-primary",
             data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
              %>
-             <%= link_to "Edit this bag", edit_bag_path(bag), class:"btn btn-primary" %>
+              <% @bag = bag %>
+             <%= link_to "Edit this bag", edit_bag_path(@bag), class:"btn btn-primary" %>
           </div>
         </div>
       </div>
