@@ -9,6 +9,7 @@
 #   end
 # db/seeds.rb
 require 'faker'
+require 'open-uri'
 
 User.destroy_all
 
@@ -19,10 +20,11 @@ User.destroy_all
     password: "password123"
   )
 
+
 # Delete existing bags
 Bag.destroy_all
 
-# Create 20 bags with regular brands
+bag_file = URI.open("https://collection.cloudinary.com/dwsotsv3c/cc34acfedc88f725cbdba817ac196e16")
 20.times do
   new_bag = Bag.new(
     name: Faker::Commerce.product_name,
@@ -32,6 +34,8 @@ Bag.destroy_all
     condition: Faker::Hipster.word,
     location: Faker::Address.city
   )
+
+  new_bag.photos.attach(io: bag_file, filename: "bag.png", content_type: "image/png")
   new_bag.user = User.first
  new_bag.save
 end
