@@ -1,4 +1,4 @@
-<div class="container background-img ">
+<div class="container">
   <div class="d-flex justify-content-center" style="height: 80px;">
     <h1><%= current_user.email %> Profile Page </h1>
   </div>
@@ -24,11 +24,10 @@
           </div>
           <div class="card-footer">
             <%= link_to "View Details", bag_path(bag), class: "btn btn-primary" %>
-            <%= link_to "Delete this bag", DESTROY_path(bag), class:"btn btn-primary",
+            <%= link_to "Delete this bag", bag_path(bag), class: "btn btn-primary",
             data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
              %>
-              <% @bag = bag %>
-             <%= link_to "Edit this bag", edit_bag_path(@bag), class:"btn btn-primary" %>
+             <%= link_to "Edit this bag", edit_bag_path(bag.id), class:"btn btn-primary" %>
           </div>
         </div>
       </div>
