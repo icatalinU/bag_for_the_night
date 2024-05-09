@@ -1,56 +1,56 @@
-<div class="container background-img ">
-  <div class="d-flex justify-content-center" style="height: 80px;">
-    <h1><%= current_user.email %> Profile Page </h1>
+<div class="container background-img">
+  <div class="d-flex justify-content-center mt-5">
+    <h1><%= current_user.email %> Profile Page</h1>
   </div>
-  <div class="d-flex">
-  <div class="row col-6">
-  <div class="card">
 
-     <div class="bags row justify-content-center">
-     <h1>Bags I own</h1>
-    <% @bags.each do |bag| %>
-      <div class="bag col-md-4 mb-4">
-        <div class="card h-100">
-          <!-- Add an image for each bag if available -->
-
-          <%= image_tag(url_for(bag.photos.first), class: "card-img-top") if bag.photos.attached? %>
-
-
-          <div class="card-body">
-            <h2 class="card-title text-center"><%= bag.name %></h2>
-            <p><strong>Brand:</strong> <%= bag.brand %></p>
-            <p><strong>Price:</strong> <%= bag.price %></p>
-            <!-- Add more information as needed -->
-          </div>
-          <div class="card-footer">
-            <%= link_to "View Details", bag_path(bag), class: "btn btn-primary" %>
-            <%= link_to "Delete this bag", profile_path(current_user), class:"btn btn-primary",
-            data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-             %>
-             <%= link_to "Edit this bag", edit_bag_path(bag), class:"btn btn-primary" %>
+  <div class="row mt-4">
+    <div class="col-md-6">
+      <div class="card shadow-lg">
+        <div class="card-body">
+          <h2 class="card-title text-center">Bags I Own</h2>
+          <div class="row justify-content-center">
+            <% @bags.each do |bag| %>
+              <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                  <div class="card-img-container">
+                    <%= image_tag(url_for(bag.photos.first), class: "card-img-top img-fluid") if bag.photos.attached? %>
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title text-center"><%= bag.name %></h5>
+                    <p><strong>Brand:</strong> <%= bag.brand %></p>
+                    <p><strong>Price:</strong> <%= bag.price %></p>
+                  </div>
+                  <div class="card-footer">
+                    <%= link_to "View Details", bag_path(bag), class: "btn btn-primary btn-block" %>
+                    <%= link_to "Edit", edit_bag_path(bag), class: "btn btn-secondary btn-block mt-2" %>
+                    <%= link_to "Delete", bag_path(bag), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-block mt-2" %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>
-    <% end %>
     </div>
-  </div>
-     </div>
-    <div class="row col-6">
-    <div class="card">
-    <ul>
-    <h1>Booking requests for my bags</h1>
-      <%  @bookings.each do |booking| %>
-        <div class="card">
-        <li>Bag Owner - <%= booking.bag.user.email %></li>
-        <li>Booking request from:- <%= booking.user.email %></li>
-        <li>From - <%= booking.booking_start %></li>
-        <li>Till - <%= booking.booking_end %></li>
-        <li>Message - <%= booking.comment %></li>
-        <li>Confirmed? - <%= booking.confirmed %></li>
+
+    <div class="col-md-6">
+      <div class="card shadow-lg">
+        <div class="card-body">
+          <h2 class="card-title text-center">Booking Requests for My Bags</h2>
+          <ul class="list-group">
+            <% @bookings.each do |booking| %>
+              <li class="list-group-item">
+                <p><strong>Bag Owner:</strong> <%= booking.bag.user.email %></p>
+                <p><strong>Booking Request from:</strong> <%= booking.user.email %></p>
+                <p><strong>From:</strong> <%= booking.booking_start %></p>
+                <p><strong>Till:</strong> <%= booking.booking_end %></p>
+                <p><strong>Message:</strong> <%= booking.comment %></p>
+                <p><strong>Confirmed:</strong> <%= booking.confirmed %></p>
+              </li>
+            <% end %>
+          </ul>
         </div>
-      <% end %>
       </div>
-    </ul>
-    </div>
     </div>
   </div>
+</div>

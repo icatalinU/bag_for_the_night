@@ -1,28 +1,40 @@
-
 <div class="container mt-5">
-
-<h1 class="display-4 text-center mb-4">Bag Rental</h1>
-<div class="bags row">
-  <% @bags.each do |bag| %>
-    <div class="bag col-md-4 mb-4">
-      <div class="card h-100 shadow-lg">
-
-        <%= image_tag(url_for(bag.photos.first), class: "card-img-top hover-effect image-size") if bag.photos.attached? %>
-        <div class="card-body">
-          <h2 class="card-title text-center"><%= bag.name %></h2>
-          <p class="mb-0"><strong>Brand:</strong> <%= bag.brand %></p>
-          <p class="mb-0"><strong>Price:</strong> <%= bag.price %></p>
-
-        </div>
-        <div class="card-footer">
-          <%= link_to "View Details", bag_path(bag), class: "btn btn-primary btn-block" %>
+  <h1 class="display-4 text-center mb-4">Bag Rental</h1>
+  <div class="row">
+    <% @bags.each do |bag| %>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow-lg">
+          <% if bag.photos.attached? %>
+            <%= image_tag(url_for(bag.photos.first), class: "card-img-top hover-effect image-size") %>
+          <% else %>
+            <%= image_tag("placeholder_image.jpg", class: "card-img-top hover-effect image-size") %>
+          <% end %>
+          <div class="card-body">
+            <h2 class="card-title text-center"><%= bag.name %></h2>
+            <p class="mb-0"><strong>Brand:</strong> <%= bag.brand %></p>
+            <p class="mb-0"><strong>Price:</strong> <%= bag.price %></p>
+          </div>
+          <div class="card-footer">
+            <%= link_to "View Details", bag_path(bag), class: "btn btn-primary btn-block" %>
+          </div>
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
+
+  <div class="text-center mt-4">
+    <%= link_to "Add a bag", new_bag_path, class: "btn btn-success btn-lg" %>
+  </div>
 </div>
 
-<div class="text-center mt-4">
-  <%= link_to "Add a bag", new_bag_path, class: "btn btn-success btn-lg" %>
-</div>
-</div>
+<style>
+  .image-size {
+    width: 100%; /* Ensure the image takes the full width of its container */
+    height: 100%; /* Ensure the image takes the full height of its container */
+    object-fit: contain; /* Scale the image to fit inside the container while preserving its aspect ratio */
+  }
+
+  .card {
+    height: 400px; /* Adjust this value as needed */
+  }
+</style>
