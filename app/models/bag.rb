@@ -11,5 +11,5 @@ class Bag < ApplicationRecord
     against: [ :name, :description ],
     using: {
       tsearch: { prefix: true }
-}
+    }
 end

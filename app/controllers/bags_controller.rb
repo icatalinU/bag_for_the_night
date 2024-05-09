@@ -1,5 +1,6 @@
 class BagsController < ApplicationController
   def index
+    # raise
     if params[:query].present?
       @bags = Bag.search_by_name_and_description(params[:query])
     else
