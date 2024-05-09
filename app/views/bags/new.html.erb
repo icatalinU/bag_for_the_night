@@ -6,7 +6,6 @@
         <%= simple_form_for(@bag) do |f| %>
           <%= f.input :name, placeholder: 'Name your bag' %>
           <%= f.input :photos, as: :file, input_html: {multiple: true} %>
-          <%= f.input :photos, as: :file, input_html: {multiple: true} %>
           <%= f.input :brand, placeholder: 'Brand' %>
           <%= f.input :price, placeholder: 'Price' %>
           <div class="input-group">

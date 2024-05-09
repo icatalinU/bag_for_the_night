@@ -10,13 +10,15 @@
     margin-bottom: 10px;
   }
 
-
-  .photo-div, .description-div {
-    flex: 1; /* Equal width */
+  .photo-div {
+    flex: 2; /* Equal width */
+  }
+  .small-bag-img {
+    width: 100px;
   }
   .bag-img {
-    width: 100%;
-    // height: 150px;
+    width: 80%;
+    height: 80%;
     margin: 0 auto;
     margin-bottom: 20px;
     border: solid 1px #221f1f;
@@ -26,8 +28,8 @@
   }
 
 .description-div {
-
-  margin: 0 auto; 
+  flex: 1;
+  margin: 0 auto;
   margin-bottom: 20px;
   border-radius: 20px;
   padding: 40px;
@@ -51,4 +53,8 @@
 .booking-link:hover {
 
   background-color: rgb(149, 156, 186);
+}
+
+.show-description {
+  padding: 20px;
 }

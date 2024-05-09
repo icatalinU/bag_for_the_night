@@ -1,31 +1,56 @@
 <div class="container">
-  <div class="d-flex justify-content-center">
+  <div class="d-flex justify-content-center" style="height: 80px;">
     <h1><%= current_user.email %> Profile Page </h1>
   </div>
+  <div class="d-flex">
   <div class="row col-6">
-    <div class="card-container">
-    <div class="card">
-    <%  @bags.each do |my_bag| %>
-    <div class="bag-img"></div>
-    <% my_bag.photos.each do |photo| %>
-      <%= cl_image_tag photo.key, alt: my_bag.name, class: "bag-img" %>
-      <% end %>
-      <%= my_bag.name %>
+  <div class="card">
+
+     <div class="bags row justify-content-center">
+     <h1>Bags I own</h1>
+    <% @bags.each do |bag| %>
+      <div class="bag col-md-4 mb-4">
+        <div class="card h-100">
+          <!-- Add an image for each bag if available -->
+
+          <%= image_tag(url_for(bag.photos.first), class: "card-img-top") if bag.photos.attached? %>
+
+
+          <div class="card-body">
+            <h2 class="card-title text-center"><%= bag.name %></h2>
+            <p><strong>Brand:</strong> <%= bag.brand %></p>
+            <p><strong>Price:</strong> <%= bag.price %></p>
+            <!-- Add more information as needed -->
+          </div>
+          <div class="card-footer">
+            <%= link_to "View Details", bag_path(bag), class: "btn btn-primary" %>
+            <%= link_to "Delete this bag", bag_path(bag), class: "btn btn-primary",
+            data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+             %>
+             <%= link_to "Edit this bag", edit_bag_path(bag.id), class:"btn btn-primary" %>
+          </div>
+        </div>
+      </div>
     <% end %>
     </div>
-    </div>
+  </div>
+     </div>
+    <div class="row col-6">
     <div class="card">
     <ul>
+    <h1>Booking requests for my bags</h1>
       <%  @bookings.each do |booking| %>
-      <div>
-        <li>booking.bag.user_id-person who owns the bag- <%= booking.bag.user_id %></li>
-        <li>booking.user_id-person who made the booking- <%= booking.user_id %></li>
+        <div class="card">
+        <li>Bag Owner - <%= booking.bag.user.email %></li>
+        <li>Booking request from:- <%= booking.user.email %></li>
         <li>From - <%= booking.booking_start %></li>
         <li>Till - <%= booking.booking_end %></li>
+        <li>Message - <%= booking.comment %></li>
+        <li>Confirmed? - <%= booking.confirmed %></li>
+        </div>
       <% end %>
       </div>
     </ul>
     </div>
+    </div>
   </div>
-  </div>
-</div>
