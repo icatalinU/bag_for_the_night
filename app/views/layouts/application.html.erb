@@ -10,14 +10,24 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+      <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+  </style>
   </head>
-  <body>
+  <body style="min-height: 100vh;">
+    <div calss="main-container">
     <%= render "shared/navbar" %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
-    <%= render"shared/footer" %>
-  </body>
-  <div class="container-fluid" style="height: 150px" >
     </div>
+  </body>
+  <%# <div class="container-fluid" style="height: 150px" > %>
+    </div>
+    <%= render"shared/footer" %>
 </html>

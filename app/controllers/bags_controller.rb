@@ -7,6 +7,7 @@ class BagsController < ApplicationController
   end
   def new
     @bag = Bag.new
+    @conditions = Bag::CONDITIONS
   end
   def create
     @bag = Bag.new(bag_params)

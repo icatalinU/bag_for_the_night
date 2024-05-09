@@ -2,18 +2,22 @@
 
   <h2 style="text-align: center;">Bag Details</h2>
 
-  <div class="bag-details">
+
+  <div class="bag-container">
+    <div class ="photo-div">
     <% @bag.photos.each do |photo| %>
       <%= cl_image_tag photo.key, alt: @bag.name, class: "bag-img" %>
       <% end %>
-      <div class="bag-text">
+      </div>
+      <div class="description-div">
       <h2>Name: <strong><%= @bag.name %></strong></h2>
       <p>Brand: <strong><%= @bag.brand %></strong></p>
       <p>Price: <strong>£<%= @bag.price %></strong></p>
       <p>Description: <strong><%= @bag.description %></strong></p>
       <p>Condition: <strong><%= @bag.condition %></strong></p>
       <p>Location: <strong><%= @bag.location %></strong></p>
+      <div><%= link_to "Book this bag", new_bag_booking_path(@bag), class: "btn" %></div>
+      <div><%= link_to "Back to home page", root_path, class: "btn" %></div>
+
       </div>
-    <%= link_to "Book this bag", new_bag_booking_path(@bag), class: "booking-link" %>
-    <%= link_to "Back to home page", root_path, class: "home-link" %>
-</div>
+      </div>
