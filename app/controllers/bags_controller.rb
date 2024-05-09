@@ -1,6 +1,14 @@
 class BagsController < ApplicationController
   def index
     @bags = Bag.all
+    @users = User.all
+    # The `geocoded` scope filters only users with coordinates
+    @markers = @users.geocoded.map do |user|
+      {
+        lat: user.latitude,
+        lng: user.longitude
+      }
+    end
   end
 
   def show

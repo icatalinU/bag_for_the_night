@@ -25,4 +25,8 @@
   <div class="text-center mt-4">
     <%= link_to "Add a bag", new_bag_path, class: "btn btn-success btn-lg" %>
   </div>
+  <div style="width: 400px; height: 400px;"
+  data-controller="map"
+  data-map-markers-value="<%= @markers.to_json %>"
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 </div>
