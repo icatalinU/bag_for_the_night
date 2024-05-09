@@ -1,28 +1,37 @@
-<div class="container background-img">
-  <div class="d-flex justify-content-center mt-5">
-    <h1><%= current_user.email %> Profile Page</h1>
-  </div>
 
-  <div class="row mt-4">
-    <div class="col-md-6">
-      <div class="card shadow-lg">
-        <div class="card-body">
-          <h2 class="card-title text-center">Bags I Own</h2>
-          <div class="row justify-content-center">
-            <% @bags.each do |bag| %>
-              <div class="col-md-4 mb-4">
-                <div class="card h-100">
-                  <%= image_tag(url_for(bag.photos.first), class: "card-img-top") if bag.photos.attached? %>
-                  <div class="card-body">
-                    <h5 class="card-title text-center"><%= bag.name %></h5>
-                    <p><strong>Brand:</strong> <%= bag.brand %></p>
-                    <p><strong>Price:</strong> <%= bag.price %></p>
-                  </div>
-                  <div class="card-footer">
-                    <%= link_to "View Details", bag_path(bag), class: "btn btn-primary btn-block" %>
-                    <%= link_to "Edit", edit_bag_path(bag), class: "btn btn-secondary btn-block mt-2" %>
-                    <%= link_to "Delete", bag_path(bag), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-block mt-2" %>
-                  </div>
+<div class="container background-img">
+< 
+=======
+
+  <div class="d-flex justify-content-center" style="height: 80px;">
+    <h1><%= current_user.email %> Profile Page </h1>
+  </div>
+  <style>
+    .card-img-top {
+      height: 200px;
+      object-fit: contain;
+    }
+  </style>
+  <div class="d-flex">
+    <div class="row col-6">
+      <div class="card">
+        <div class="bags row justify-content-center">
+          <h1>Bags I own</h1>
+          <% @bags.each do |bag| %>
+            <div class="bag col-md-4 mb-4">
+              <div class="card h-100">
+                <%= image_tag(url_for(bag.photos.first), class: "card-img-top") if bag.photos.attached? %>
+                <div class="card-body">
+                  <h2 class="card-title text-center"><%= bag.name %></h2>
+                  <p><strong>Brand:</strong> <%= bag.brand %></p>
+                  <p><strong>Price:</strong> <%= bag.price %></p>
+                </div>
+                <div class="card-footer">
+                  <%= link_to "View Details", bag_path(bag), class: "btn btn-primary" %>
+                  <%= link_to "Delete this bag", bag_path(bag), class: "btn btn-primary",
+                               data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+                  <%= link_to "Edit this bag", edit_bag_path(bag), class: "btn btn-primary" %>
+>>>>>>> 5e94e436766f0a408107e9701f55d1fcf7e8e039
                 </div>
               </div>
             <% end %>
