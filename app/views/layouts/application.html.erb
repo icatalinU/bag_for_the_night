@@ -10,16 +10,24 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+      <style>
+
+  </style>
   </head>
   <body>
+    <div class="main-container">
     <%= render "shared/navbar" %>
+
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
-    <%= render"shared/footer" %>
-  </body>
-  <div class="container-fluid" style="height: 150px" >
     </div>
+<<<<<<< HEAD
+  </body>
+  <%# <div class="container-fluid" style="height: 150px" > %>
+    </div>
+    <%= render"shared/footer" %>
+=======
 
     <!-- Bootstrap CSS -->
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
@@ -33,4 +41,5 @@
   <!-- Bootstrap JS -->
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
+>>>>>>> 7fcef68cffb0dbe38ef340c6d9b1777f2ea64c8e
 </html>

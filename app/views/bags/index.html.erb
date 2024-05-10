@@ -1,4 +1,22 @@
 <div class="container mt-5">
+<<<<<<< HEAD
+ <%= render "shared/search" %>
+<h1 class="display-4 text-center mb-4">Bag Rental</h1>
+<div class="bags row">
+  <% @bags.each do |bag| %>
+    <div class="bag col-md-4 mb-4">
+      <div class="card h-100 shadow-lg">
+
+        <%= image_tag(url_for(bag.photos.first), class: "card-img-top hover-effect image-size") if bag.photos.attached? %>
+        <div class="card-body">
+          <h2 class="card-title text-center"><%= bag.name %></h2>
+          <p class="mb-0"><strong>Brand:</strong> <%= bag.brand %></p>
+          <p class="mb-0"><strong>Price:</strong> <%= bag.price %></p>
+
+        </div>
+        <div class="card-footer">
+          <%= link_to "View Details", bag_path(bag), class: "btn btn-primary btn-block" %>
+=======
   <h1 class="display-4 text-center mb-4">Bag Rental</h1>
   <div class="row">
     <% @bags.each do |bag| %>
@@ -17,6 +35,7 @@
           <div class="card-footer">
             <%= link_to "View Details", bag_path(bag), class: "btn btn-primary btn-block" %>
           </div>
+>>>>>>> 7fcef68cffb0dbe38ef340c6d9b1777f2ea64c8e
         </div>
       </div>
     <% end %>

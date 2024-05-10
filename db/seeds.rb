@@ -24,7 +24,5 @@ require 'faker'
 
   new_bag.user = User.first
  new_bag.save
-end
 
 puts "Seeding completed!"
-
