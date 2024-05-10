@@ -31,7 +31,7 @@ bag_links = ["https://images-na.ssl-images-amazon.com/images/I/813ptKmjJVL.jpg",
     condition: Faker::Hipster.word,
     location: Faker::Address.city
   )
-  file = URI.open(bag_links[i])
+  file = URI.open(bag_links.sample)
   new_bag.photos.attach(io: file, filename: "Katabag.png", content_type: "image/png")
   new_bag.user = User.first
   new_bag.save
