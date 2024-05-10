@@ -9,6 +9,6 @@ Rails.application.routes.draw do
   # root "posts#index"
   get '/profile/:users_id', to: 'pages#profile', as: 'profile'
   resources :bags do
-    resources :bookings, only: [:index, :new, :create]
+    resources :bookings, only: [:new, :create]
   end
 end

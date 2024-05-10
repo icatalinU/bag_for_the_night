@@ -3,9 +3,8 @@ class PagesController < ApplicationController
   end
 
   def profile
-    @user = params[:current_user]
-    @bags = Bag.where(@user_id == :user_id)
-    @bookings = Booking.where(@user == :user_id)
-    
+    @user = current_user
+    @bags = @user.bags
+    @bookings = @user.bookings
   end
 end
