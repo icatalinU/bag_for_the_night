@@ -1,4 +1,6 @@
 <div class="container mt-5">
+
+  <%= render "shared/search" %>
   <h1 class="display-4 text-center mb-4">Bag Rental</h1>
   <div class="row">
     <% @bags.each do |bag| %>
@@ -26,3 +28,15 @@
     <%= link_to "Add a bag", new_bag_path, class: "btn btn-success btn-lg" %>
   </div>
 </div>
+
+<style>
+  .image-size {
+    width: 100%; /* Ensure the image takes the full width of its container */
+    height: 100%; /* Ensure the image takes the full height of its container */
+    object-fit: contain; /* Scale the image to fit inside the container while preserving its aspect ratio */
+  }
+
+  .card {
+    height: 400px; /* Adjust this value as needed */
+  }
+</style>

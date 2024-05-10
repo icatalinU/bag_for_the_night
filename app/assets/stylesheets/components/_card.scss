@@ -16,6 +16,7 @@
       height: auto;
     }
 
+    
     .card-body {
       padding: 20px;
 
@@ -44,4 +45,23 @@
       }
     }
   }
+}
+.card {
+  border: none;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.card-footer {
+  background-color: #f8f9fa;
+}
+
+.card {
+  border: none;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.card-footer {
+  background-color: #f8f9fa;
 }

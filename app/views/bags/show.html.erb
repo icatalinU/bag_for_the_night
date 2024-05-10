@@ -2,18 +2,34 @@
 
   <h2 style="text-align: center;">Bag Details</h2>
 
-  <div class="bag-details">
-    <% @bag.photos.each do |photo| %>
-      <%= cl_image_tag photo.key, alt: @bag.name, class: "bag-img" %>
-      <% end %>
-      <div class="bag-text">
+  <div class="bag-container">
+    <div class ="photo-div">
+      <div class="lrg-photo-img">
+  <% if @bag.photos.attached? && @bag.photos[0].present? %>
+    <%= cl_image_tag @bag.photos[0].key, alt: @bag.name, class: "bag-img" %>
+  <% end %>
+</div>
+
+<% @bag.photos.each_with_index do |photo, index| %>
+  <% next if index.zero? || photo.nil? %>
+  <div class="small-bag-img">
+    <%= cl_image_tag photo.key, alt: @bag.name, class: "bag-img" %>
+  </div>
+<% end %>
+</div>
+
+
+      <div class="description-div">
       <h2>Name: <strong><%= @bag.name %></strong></h2>
+      <div class="show-description">
       <p>Brand: <strong><%= @bag.brand %></strong></p>
       <p>Price: <strong>£<%= @bag.price %></strong></p>
       <p>Description: <strong><%= @bag.description %></strong></p>
       <p>Condition: <strong><%= @bag.condition %></strong></p>
       <p>Location: <strong><%= @bag.location %></strong></p>
       </div>
-    <%= link_to "Book this bag", new_bag_booking_path(@bag), class: "booking-link" %>
-    <%= link_to "Back to home page", root_path, class: "home-link" %>
-</div>
+      <div><%= link_to "Book this bag", new_bag_booking_path(@bag), class: "btn" %></div>
+      <div><%= link_to "Back to home page", root_path, class: "btn" %></div>
+
+      </div>
+      </div>

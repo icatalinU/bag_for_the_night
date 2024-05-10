@@ -1,6 +1,20 @@
 class BagsController < ApplicationController
   def index
+    if params[:query].present?
+      @bags = Bag.search_by_name_and_description(params[:query])
+    else
+      @bags = Bag.all
+    end  
+
     @bags = Bag.all
+    @users = User.all
+    # The `geocoded` scope filters only users with coordinates
+    @markers = @users.geocoded.map do |user|
+      {
+        lat: user.latitude,
+        lng: user.longitude
+      }
+    end
   end
 
   def show
@@ -9,6 +23,7 @@ class BagsController < ApplicationController
 
   def new
     @bag = Bag.new
+    @conditions = Bag::CONDITIONS
   end
 
   def create
