@@ -8,18 +8,21 @@
           <%= f.input :photos, as: :file, input_html: {multiple: true} %>
           <%= f.input :brand, placeholder: 'Brand' %>
           <%= f.input :price, placeholder: 'Price' %>
+          <div class="input-group">
+          <%= f.label :condition %>
+          <%= f.select :condition, @conditions, prompt: 'Select Condition' %>
+      </div>
           <%= f.input :description, placeholder: 'Description' %>
           <%= f.input :location, placeholder: "Location" %>
           <%= f.submit class: 'btn btn-flat' %>
         <% end %>
-      </div>
     </div>
   </div>
 </div>
 
-
 <!--<h1>Bags#new</h1>
 <p>Find me in app/views/bags/new.html.erb</p>
+
 
 <%= simple_form_for(@bag) do |f| %>
   <%= f.input :name %>

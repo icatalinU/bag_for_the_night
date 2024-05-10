@@ -10,5 +10,26 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+@import url("https://api.mapbox.com/mapbox-gl-js/v3.1.2/mapbox-gl.css");
+
+// body {
+//   display: flex;
+//   flex-direction: column;
+//   min-height: 100vh;
+//   margin: 0; /* Remove default margin */
+// }
+
+// .content {
+//   flex: 1; /* Allow content to grow and push footer to bottom */
+// }
+/* Add this to your application.scss or custom stylesheet */
 
 
+.hover-effect {
+  border-radius: 15px;
+
+  &:hover {
+    transform: scale(1.1);
+    transition: transform .2s;
+  }
+}
