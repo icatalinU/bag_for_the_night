@@ -60,7 +60,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_09_123719) do
     t.date "booking_start"
     t.date "booking_end"
     t.text "comment"
-    t.boolean "confirmed"
+    t.boolean "confirmed", default: false
     t.bigint "bag_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
