@@ -11,4 +11,8 @@ Rails.application.routes.draw do
   resources :bags do
     resources :bookings, only: [:index, :new, :create]
   end
+
+
+   
+
 end
