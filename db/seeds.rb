@@ -10,15 +10,17 @@
 # db/seeds.rb
 require "open-uri"
 require 'faker'
-User.destroy_all
- #=> { username: 'catalin', email: 'catalin@gmail.com', password: 'password123' }
-  User.create(
-     email:"catalin@gmail.com",
-    password: "password123"
-  )
-   bag_links =["https://images-na.ssl-images-amazon.com/images/I/813ptKmjJVL.jpg","https://m.media-amazon.com/images/I/71MQz9WZAxL._AC_SY695_.jpg","https://m.media-amazon.com/images/I/61mcR7xSM0L._AC_SX535_.jpg"]
-# Delete existing bags
+puts "Cleaning database..."
+Booking.destroy_all
 Bag.destroy_all
+User.destroy_all
+puts "Creating users..."
+ #=> { username: 'catalin', email: 'catalin@gmail.com', password: 'password123' }
+User.create(
+  email:"catalin@gmail.com",
+  password: "password123"
+)
+bag_links = ["https://images-na.ssl-images-amazon.com/images/I/813ptKmjJVL.jpg","https://m.media-amazon.com/images/I/71MQz9WZAxL._AC_SY695_.jpg","https://m.media-amazon.com/images/I/61mcR7xSM0L._AC_SX535_.jpg"]
 # Create 20 bags with regular brands
 20.times do |i|
   new_bag = Bag.new(
@@ -28,10 +30,10 @@ Bag.destroy_all
     description: Faker::Lorem.paragraph(sentence_count: 2),
     condition: Faker::Hipster.word,
     location: Faker::Address.city
- )
- file = URI.open(bag_links[i])
- new_bag.photos.attach(io: file, filename: "Katabag.png", content_type: "image/png")
+  )
+  file = URI.open(bag_links.sample)
+  new_bag.photos.attach(io: file, filename: "Katabag.png", content_type: "image/png")
   new_bag.user = User.first
- new_bag.save
+  new_bag.save
 end
 puts "Seeding completed!"
