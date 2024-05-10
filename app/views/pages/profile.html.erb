@@ -1,4 +1,3 @@
-
 <div class="container background-img">
   <div class="d-flex justify-content-center mt-5">
     <h1><%= current_user.email %> Profile Page</h1>
@@ -13,7 +12,9 @@
             <% @bags.each do |bag| %>
               <div class="col-md-4 mb-4">
                 <div class="card h-100">
-                  <%= image_tag(url_for(bag.photos.first), class: "card-img-top") if bag.photos.attached? %>
+                  <div class="card-img-container">
+                    <%= image_tag(url_for(bag.photos.first), class: "card-img-top img-fluid") if bag.photos.attached? %>
+                  </div>
                   <div class="card-body">
                     <h5 class="card-title text-center"><%= bag.name %></h5>
                     <p><strong>Brand:</strong> <%= bag.brand %></p>

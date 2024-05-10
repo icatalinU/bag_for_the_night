@@ -9,7 +9,7 @@
           <% if bag.photos.attached? %>
             <%= image_tag(url_for(bag.photos.first), class: "card-img-top hover-effect image-size") %>
           <% else %>
-            <%= image_tag("placeholder_image.png", class: "card-img-top hover-effect image-size") %>
+            <%= image_tag("placeholder_image.jpg", class: "card-img-top hover-effect image-size") %>
           <% end %>
           <div class="card-body">
             <h2 class="card-title text-center"><%= bag.name %></h2>
@@ -19,7 +19,6 @@
           <div class="card-footer">
             <%= link_to "View Details", bag_path(bag), class: "btn btn-primary btn-block" %>
           </div>
-
         </div>
       </div>
     <% end %>
@@ -28,8 +27,16 @@
   <div class="text-center mt-4">
     <%= link_to "Add a bag", new_bag_path, class: "btn btn-success btn-lg" %>
   </div>
-  <div style="width: 400px; height: 400px;"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 </div>
+
+<style>
+  .image-size {
+    width: 100%; /* Ensure the image takes the full width of its container */
+    height: 100%; /* Ensure the image takes the full height of its container */
+    object-fit: contain; /* Scale the image to fit inside the container while preserving its aspect ratio */
+  }
+
+  .card {
+    height: 400px; /* Adjust this value as needed */
+  }
+</style>
