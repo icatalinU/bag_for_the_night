@@ -5,8 +5,10 @@ class BagsController < ApplicationController
     else
       @bags = Bag.all
     end
+
     
-    @bags = Bag.all
+    # @bags = Bag.all
+
     @users = User.all
     # The `geocoded` scope filters only users with coordinates
     @markers = @users.geocoded.map do |user|
