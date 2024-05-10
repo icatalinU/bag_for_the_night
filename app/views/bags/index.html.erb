@@ -6,26 +6,28 @@
     <% @bags.each do |bag| %>
       <div class="col-md-4 mb-4">
         <div class="card h-100 shadow-lg">
+          <div class="card-image">
           <% if bag.photos.attached? %>
             <%= image_tag(url_for(bag.photos.first), class: "card-img-top hover-effect image-size") %>
           <% else %>
             <%= image_tag("placeholder_image.jpg", class: "card-img-top hover-effect image-size") %>
           <% end %>
+          </div>
           <div class="card-body">
             <h2 class="card-title text-center"><%= bag.name %></h2>
             <p class="mb-0"><strong>Brand:</strong> <%= bag.brand %></p>
             <p class="mb-0"><strong>Price:</strong> <%= bag.price %></p>
           </div>
           <div class="card-footer">
-            <%= link_to "View Details", bag_path(bag), class: "btn btn-primary btn-block" %>
+            <%= link_to "View Details", bag_path(bag), class: "btn" %>
           </div>
         </div>
       </div>
     <% end %>
   </div>
-
+<%# see below %>
   <div class="text-center mt-4">
-    <%= link_to "Add a bag", new_bag_path, class: "btn btn-success btn-lg" %>
+    <%= link_to "Add a bag", new_bag_path, class: "btn" %>
   </div>
 </div>
 
